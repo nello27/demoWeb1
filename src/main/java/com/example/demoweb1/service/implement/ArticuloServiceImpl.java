@@ -7,8 +7,9 @@ package com.example.demoweb1.service.implement;
 import com.example.demoweb1.dao.ArticuloDao;
 import com.example.demoweb1.model.Articulo;
 import com.example.demoweb1.service.ArticuloService;
-import jakarta.transaction.Transactional;
+
 import java.util.List;
+import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
