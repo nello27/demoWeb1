@@ -18,7 +18,7 @@ import org.springframework.stereotype.Service;
  * @author macbookpro
  */
 @Service
-public class ArticuloServiceImpl implements ArticuloService{
+public class ArticuloServiceImpl implements ArticuloService {
 
     @Autowired
     private ArticuloDao articulodao;
@@ -49,10 +49,24 @@ public class ArticuloServiceImpl implements ArticuloService{
 
     @Override
     public List<Articulo> findByDescripcion(String descripcion) {
-        
-        return(List<Articulo>)articulodao.buscarPorDescripcion(descripcion);
+
+        return (List<Articulo>) articulodao.buscarPorDescripcion(descripcion);
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    @Override
+    public List<Articulo> findByBusquedaGeneral(String idcliente) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public List<Articulo> findByBusquedaGeneral(Integer idcliente) {
+        
+        return articulodao.BusquedaGeneral(idcliente);
+        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+
+ 
 
 }

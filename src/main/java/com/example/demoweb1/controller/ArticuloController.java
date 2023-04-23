@@ -49,6 +49,12 @@ public class ArticuloController {
         return articuloservice.findByDescripcion(descripcion);
     }
 
+    //GET para consultar por descripcion
+    @GetMapping(value = "/lista/descripcion/general/{idcliente}")
+    public List<Articulo> BusquedaGeneral(@PathVariable Integer idcliente) {
+        return (List<Articulo>) articuloservice.findByBusquedaGeneral(idcliente);
+    }
+
     //Petición POST para insertar
     @PostMapping(value = "/")
     public ResponseEntity<Articulo> agregar(@RequestBody Articulo articulo) {

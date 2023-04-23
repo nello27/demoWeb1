@@ -19,4 +19,6 @@ public interface ArticuloService {
     public Articulo findById(Integer id);
     public List<Articulo> findAll();
     public List<Articulo> findByDescripcion(String descripcion);
+    public List<Articulo> findByBusquedaGeneral(String idcliente);
+    public List<Articulo> findByBusquedaGeneral(Integer idcliente);
 }
