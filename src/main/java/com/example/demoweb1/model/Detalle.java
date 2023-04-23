@@ -15,7 +15,6 @@ import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-
 /**
  *
  * @author macbookpro
@@ -36,12 +35,13 @@ public class Detalle {
     private Integer cantidad;
 
     @ManyToOne
-    @JoinColumns({
-        @JoinColumn(name="idfactura", referencedColumnName="factura_idfactura"),
-        @JoinColumn(name="idarticulo", referencedColumnName="articulos_idarticulos")
-    })
-    @JsonIgnoreProperties("detalle")
-    private Detalle detalle;
+    @JoinColumn(name = "factura_idfactura", insertable = false, updatable = false)
+    private Factura factura;
+
+    @ManyToOne
+    @JoinColumn(name = "articulos_idarticulos", insertable = false, updatable = false)
+    private Articulo articulo;
+
 
     public Integer getFactura_idfactura() {
         return factura_idfactura;
@@ -67,16 +67,28 @@ public class Detalle {
         this.cantidad = cantidad;
     }
 
-    public Detalle getDetalle() {
-        return detalle;
-    }
-
-    public void setDetalle(Detalle detalle) {
-        this.detalle = detalle;
-    }
 
     public Integer getIddetalle() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
+        return factura_idfactura;
+        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    public Factura getFactura() {
+        return factura;
+    }
+
+    public void setFactura(Factura factura) {
+        this.factura = factura;
+    }
+
+    public Articulo getArticulo() {
+        return articulo;
+    }
+
+    public void setArticulo(Articulo articulo) {
+        this.articulo = articulo;
+    }
+    
+    
 }

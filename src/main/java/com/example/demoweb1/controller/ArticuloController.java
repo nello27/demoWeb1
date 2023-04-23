@@ -28,7 +28,7 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin("*")  //acepte todas las peticiones entrantes
 @RequestMapping("/articulo") //RequestMapping completa el endpoint
 public class ArticuloController {
-
+    
     @Autowired
     private ArticuloService articuloservice;
 
@@ -50,7 +50,7 @@ public class ArticuloController {
     }
 
     //GET para consultar por descripcion
-    @GetMapping(value = "/lista/descripcion/general/{idcliente}")
+    @GetMapping(value = "/general/{idcliente}")
     public List<Articulo> BusquedaGeneral(@PathVariable Integer idcliente) {
         return (List<Articulo>) articuloservice.findByBusquedaGeneral(idcliente);
     }
