@@ -4,40 +4,47 @@
  */
 package com.example.demoweb1.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import org.hibernate.cache.spi.support.AbstractReadWriteAccess.Item;
 
 /**
  *
  * @author macbookpro
  */
 @Entity
-@Table(name="articulo")
+@Table(name = "articulos")
 public class Articulo {
-    
+
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name="idarticulo")
-    private Integer idarticulo;
-    @Column(name="descripcion")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idarticulos")
+    private Integer idarticulos;
+    @Column(name = "descripcion")
     private String descripcion;
-    @Column(name="valor")
+    @Column(name = "valor")
     private Integer valor;
-    
-    @OneToMany(mappedBy="articulo")
-    @JsonIgnoreProperties("articulo")
-    public Integer getIdarticulo() {
-        return idarticulo;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "idarticulos")
+    private List<Detalle> detalle;
+
+    public Integer getIdarticulos() {
+        return idarticulos;
     }
 
-    public void setIdarticulo(Integer idarticulo) {
-        this.idarticulo = idarticulo;
+    public void setIdarticulos(Integer idarticulos) {
+        this.idarticulos = idarticulos;
     }
 
     public String getDescripcion() {
@@ -55,6 +62,15 @@ public class Articulo {
     public void setValor(Integer valor) {
         this.valor = valor;
     }
+
+    public List<Detalle> getDetalle() {
+        return detalle;
+    }
+
+    public void setDetalle(List<Detalle> detalle) {
+        this.detalle = detalle;
+    }
     
-        
+    
+
 }

@@ -18,5 +18,5 @@ public interface ArticuloService {
     public void delete(Integer id);
     public Articulo findById(Integer id);
     public List<Articulo> findAll();
-
+    public List<Articulo> findByDescripcion(String descripcion);
 }

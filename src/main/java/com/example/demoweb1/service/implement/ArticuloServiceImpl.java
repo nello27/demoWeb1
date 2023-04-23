@@ -46,4 +46,13 @@ public class ArticuloServiceImpl implements ArticuloService{
 
         return (List<Articulo>) articulodao.findAll();
     }
+
+    @Override
+    public List<Articulo> findByDescripcion(String descripcion) {
+        
+        return(List<Articulo>)articulodao.buscarPorDescripcion(descripcion);
+        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+
 }

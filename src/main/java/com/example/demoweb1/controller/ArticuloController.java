@@ -34,13 +34,19 @@ public class ArticuloController {
 
     //Peticiones GET
     @GetMapping(value = "/lista") //se agrega al endpoint
-    public List<Articulo> consultartodos() {
+    public List<Articulo> consultartodosArticulos() {
         return articuloservice.findAll();
     }
 
-    @GetMapping(value = "/lista/{id}")
+    @GetMapping(value = "/lista/id/{id}")
     public Articulo consultarporId(@PathVariable Integer id) {
         return articuloservice.findById(id);
+    }
+
+    //GET para consultar por descripcion
+    @GetMapping(value = "/lista/descripcion/{descripcion}")
+    public List<Articulo> buscarPorDescripcion(@PathVariable String descripcion) {
+        return articuloservice.findByDescripcion(descripcion);
     }
 
     //Petición POST para insertar
@@ -55,7 +61,7 @@ public class ArticuloController {
     @PutMapping(value = "/{id}")
     public ResponseEntity<Articulo> actualizar(@RequestBody Articulo articulo) {
         //Se busca primero el articulo
-        Articulo art = articuloservice.findById(articulo.getIdarticulo());
+        Articulo art = articuloservice.findById(articulo.getIdarticulos());
         if (art != null) {
             //Encontró al articulo con el id
             art.setDescripcion(articulo.getDescripcion());
