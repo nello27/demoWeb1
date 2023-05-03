@@ -3,11 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.example.demoweb1.service.implement;
+
 import com.example.demoweb1.dao.ClienteDao;
 import com.example.demoweb1.model.Cliente;
 import com.example.demoweb1.service.ClienteService;
 
 import java.util.List;
+import java.util.Optional;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,7 +28,18 @@ public class ClienteServiceImpl implements ClienteService {
     @Override
     @Transactional
     public Cliente save(Cliente cliente) {
-        return clientedao.save(cliente);
+
+        if (cliente.getIdcliente() == null) {
+            return clientedao.save(cliente);
+        } else {
+            Optional<Cliente> c = clientedao.findById(cliente.getIdcliente());
+            if (c.isEmpty()) {
+                return clientedao.save(cliente);
+            } else {
+                return cliente;
+            }
+
+        }
     }
 
     @Override
@@ -34,19 +47,20 @@ public class ClienteServiceImpl implements ClienteService {
     public void delete(Integer id) {
         clientedao.deleteById(id);
     }
-    
+
     @Override
-    public Cliente findById(Integer id){
+    public Cliente findById(Integer id) {
         return clientedao.findById(id).orElse(null);
     }
-    
+
     @Override
-    public List<Cliente> findAll(){
-        
+    public List<Cliente> findAll() {
+
         return (List<Cliente>) clientedao.findAll();
     }
-    
-        public List<Cliente> findByNombre(String nombre){
-            return(List<Cliente>)clientedao.buscarpornombre(nombre);
-        }
+
+    @Override
+    public List<Cliente> findByNombre(String nombre) {
+        return (List<Cliente>) clientedao.buscarpornombre(nombre);
+    }
 }

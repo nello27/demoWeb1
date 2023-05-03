@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informacion clientes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" src="funciones.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous">
+    </script>
+</head>
+
+<body>
+    <h2>No olviden dejar su dinero queridos esclavos digo clientes</h2>
+    <button onclick="traerInformacion()">Consultar</button>
+    <div>
+        <input type="number" id="idcliente" placeholder="idcliente">
+        <input type="text" id="nombre" placeholder="nombre">
+        <input type="text" id="direccion" placeholder="direccion">
+        <input type="email" id="correo" placeholder="correo">
+    </div>
+    <div id="resultado"></div>
+    <button onclick="guardarInformacion()">Guardar</button>
+    <button onclick="actualizarInformacion()">Actualizar</button>
+    <script type="text/javascript">
+        document.write("atentos")
+    </script>
+</body>
+
+</html>

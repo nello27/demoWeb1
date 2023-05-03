@@ -70,20 +70,20 @@ public class Cliente {
         this.nombre = nombre;
     }
 
-    public String getCorreoelectronico() {
-        return correo;
-    }
-
-    public void setCorreoelectronico(String correo) {
-        this.correo = correo;
-    }
-
     public String getDireccion() {
         return direccion;
     }
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
 
     public List<Factura> getFacturas() {
@@ -93,5 +93,7 @@ public class Cliente {
     public void setFacturas(List<Factura> facturas) {
         this.facturas = facturas;
     }
+
+    
     
 }

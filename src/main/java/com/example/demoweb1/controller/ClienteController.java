@@ -46,7 +46,7 @@ public class ClienteController {
     }
     
     //Petición POST para insertar
-    @PostMapping(value="/")
+    @PostMapping(value="/guardar")
     public ResponseEntity<Cliente> agregar(@RequestBody Cliente cliente){
         Cliente cli;
         cli = clienteservice.save(cliente); //se guarda el cliente
@@ -61,7 +61,7 @@ public class ClienteController {
         if (cli!=null) {
             //Encontró al cliente con el id
             cli.setNombre(cliente.getNombre());
-            cli.setCorreoelectronico(cliente.getCorreoelectronico());
+            cli.setCorreo(cliente.getCorreo());
             cli.setDireccion(cliente.getDireccion());
             clienteservice.save(cli);
         } else {
