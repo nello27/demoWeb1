@@ -74,7 +74,6 @@ function guardarInformacion(){
 
     let myData={
 
-        'idcliente':$("#idcliente").val(),
         'nombre':$("#nombre").val(),
         'direccion':$("#direccion").val(),
         'correo':$("#correo").val(),
