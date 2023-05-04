@@ -72,7 +72,7 @@ public class ClienteController {
     }
     
     //Petición DELETE para borrar
-    @DeleteMapping(value="/{id}")
+    @DeleteMapping(value="eliminar/{id}")
     public ResponseEntity<Cliente> borrar(@PathVariable Integer id){
         //Buscamos por id
         Cliente cli = clienteservice.findById(id);

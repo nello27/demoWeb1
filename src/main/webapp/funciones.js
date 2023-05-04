@@ -123,10 +123,10 @@ function actualizarInformacion(idelemento){
     let dataToSend=JSON.stringify(myData);
 
     alert(dataToSend);
-    let miurl= "http://localhost:8080/demoweb1/cliente/"+idelemento;
+    let miurl= "http://localhost:8080/demoweb1/cliente/"+myData.idcliente;
     alert (miurl);
     $.ajax({
-        url:"http://localhost:8080/demoweb1/cliente/"+idelemento,
+        url:"http://localhost:8080/demoweb1/cliente/"+myData.idclient,
         type:"PUT",
         data:dataToSend,
         contentType:"application/JSON",
@@ -136,34 +136,33 @@ function actualizarInformacion(idelemento){
             $("#nombre").val("");
             $("#direccion").val("");
             $("#correo").val("");
-            traerinformacion();
-            alert("Se he guardado")
+            traerInformacion();
+            alert("Se he Actualizado")
         }
 
     });
 }
 
-
-
 function borrar() {
     
-    let myData={
-
-        idcliente:$("#idcliente").val()
-        
-    }
-    let dataToSent = JSON.stringify(myData);
+    let idcliente = $("#idcliente").val();
+    
     $.ajax({
-      url:"http://localhost:8080/demoweb1/cliente/"+idelemento,
-      type:"DELETE",
-      data: dataToSent,
-      contentType: "application/json",
-      datatype:"JSON",
-      success:function(respuesta){
+        url: "http://localhost:8080/demoweb1/cliente/eliminar/" + idcliente,
+        type: "DELETE",
+        contentType: "application/json",
+        dataType: "JSON",
+        success: function(respuesta) {
             //Acá se puede validar la respuesta.
-            $("#div1").empty();
-            traerinformacion();
-            alert("Se ha eliminado")
-      }
+            $("#idcliente").empty();
+            $("#nombre").val("");
+            $("#direccion").val("");
+            $("#correo").val("");
+            traerInformacion();
+            alert("Se ha eliminado");
+        },
+        error: function(error) {
+            console.log("Error" + $(error));
+        }
     });
 }
